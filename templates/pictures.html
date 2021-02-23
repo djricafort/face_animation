@@ -1,0 +1,61 @@
+{% extends "base.html" %} {% block content %}
+<div class="navbar navbar-expand-lg navbar-dark bg-primary">
+    <div class="container">
+        <a class="navbar-brand" href="#">Akira</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarColor01">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url_for('index') }}">Home</a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="#">Pictures</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url_for('videos') }}">Videos</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url_for('synthetic_videos') }}">Synthetic</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+<div class="container">
+    <h2>Image Gallery</h2>
+    <form id="upload-file" method="post" enctype="multipart/form-data">
+        <label for="imageUpload" class="upload-label">
+            Upload Image
+        </label>
+        <input type="file" name="file" id="imageUpload" accept=".png, .jpg, .jpeg">
+    </form>
+    <div>
+        <div id="gallery">
+        </div>
+        <div id="myModal" class="modal" role="dialog">
+            <span class="close">&times;</span>
+            <div class="modal-dialog">
+                <!-- Modal content-->
+                <div class="modal-content">
+                    <div class="modal-body">
+                        <img class="modal-content" id="img01">
+                        <div id="caption"></div>
+                    </div>
+                    <div class="modal-footer">
+                        <!-- <button type="button" class="btn btn-danger" id="btn-delete">Delete</button> -->
+                        <a id="dl-link">
+                            <button type="button" class="btn btn-success" id="btn-download">Download</button>
+                        </a>
+                        <button type="button" class="btn btn-outline-primary" id="btn-close">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+{% block scripts %}
+<script src="{{ url_for('static', filename='js/pictures.js') }}" type="text/javascript"></script>
+{% endblock scripts %}
